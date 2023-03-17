@@ -2,8 +2,8 @@
 
 This repository includes:
 
-- CodeIgniter v4.2.11
-- CodeIgniter Shield v1.0.0-beta.3
+- CodeIgniter v4.3.2
+- CodeIgniter Shield v1.0.0-beta.4
 
 ## Requirements
 
@@ -50,23 +50,22 @@ $ php spark serve
 ### Defined Routes
 
 ```console
-+--------+-------------------------+--------------------------------------------------------------------+----------------+---------------+
-| Method | Route                   | Handler                                                            | Before Filters | After Filters |
-+--------+-------------------------+--------------------------------------------------------------------+----------------+---------------+
-| GET    | /                       | \App\Controllers\Home::index                                       |                | toolbar       |
-| GET    | register                | \CodeIgniter\Shield\Controllers\RegisterController::registerView   |                | toolbar       |
-| GET    | login                   | \CodeIgniter\Shield\Controllers\LoginController::loginView         |                | toolbar       |
-| GET    | login/magic-link        | \CodeIgniter\Shield\Controllers\MagicLinkController::loginView     |                | toolbar       |
-| GET    | login/verify-magic-link | \CodeIgniter\Shield\Controllers\MagicLinkController::verify        |                | toolbar       |
-| GET    | logout                  | \CodeIgniter\Shield\Controllers\LoginController::logoutAction      |                | toolbar       |
-| GET    | auth/a/show             | \CodeIgniter\Shield\Controllers\ActionController::show             |                | toolbar       |
-| POST   | register                | \CodeIgniter\Shield\Controllers\RegisterController::registerAction |                | toolbar       |
-| POST   | login                   | \CodeIgniter\Shield\Controllers\LoginController::loginAction       |                | toolbar       |
-| POST   | login/magic-link        | \CodeIgniter\Shield\Controllers\MagicLinkController::loginAction   |                | toolbar       |
-| POST   | auth/a/handle           | \CodeIgniter\Shield\Controllers\ActionController::handle           |                | toolbar       |
-| POST   | auth/a/verify           | \CodeIgniter\Shield\Controllers\ActionController::verify           |                | toolbar       |
-| CLI    | ci(.*)                  | \CodeIgniter\CLI\CommandRunner::index/$1                           |                |               |
-+--------+-------------------------+--------------------------------------------------------------------+----------------+---------------+
++--------+-------------------------+--------------------+--------------------------------------------------------------------+----------------+---------------+
+| Method | Route                   | Name               | Handler                                                            | Before Filters | After Filters |
++--------+-------------------------+--------------------+--------------------------------------------------------------------+----------------+---------------+
+| GET    | /                       | »                  | \App\Controllers\Home::index                                       |                | toolbar       |
+| GET    | register                | register           | \CodeIgniter\Shield\Controllers\RegisterController::registerView   |                | toolbar       |
+| GET    | login                   | login              | \CodeIgniter\Shield\Controllers\LoginController::loginView         |                | toolbar       |
+| GET    | login/magic-link        | magic-link         | \CodeIgniter\Shield\Controllers\MagicLinkController::loginView     |                | toolbar       |
+| GET    | login/verify-magic-link | verify-magic-link  | \CodeIgniter\Shield\Controllers\MagicLinkController::verify        |                | toolbar       |
+| GET    | logout                  | logout             | \CodeIgniter\Shield\Controllers\LoginController::logoutAction      |                | toolbar       |
+| GET    | auth/a/show             | auth-action-show   | \CodeIgniter\Shield\Controllers\ActionController::show             |                | toolbar       |
+| POST   | register                | »                  | \CodeIgniter\Shield\Controllers\RegisterController::registerAction |                | toolbar       |
+| POST   | login                   | »                  | \CodeIgniter\Shield\Controllers\LoginController::loginAction       |                | toolbar       |
+| POST   | login/magic-link        | »                  | \CodeIgniter\Shield\Controllers\MagicLinkController::loginAction   |                | toolbar       |
+| POST   | auth/a/handle           | auth-action-handle | \CodeIgniter\Shield\Controllers\ActionController::handle           |                | toolbar       |
+| POST   | auth/a/verify           | auth-action-verify | \CodeIgniter\Shield\Controllers\ActionController::verify           |                | toolbar       |
++--------+-------------------------+--------------------+--------------------------------------------------------------------+----------------+---------------+
 ```
 
 ## References
