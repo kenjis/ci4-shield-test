@@ -7,7 +7,8 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "codeigniter4/framework": "^4.0",
-        "codeigniter4/shield": "^1.0@beta"
+        "codeigniter4/shield": "dev-feat-jwt",
+        "firebase/php-jwt": "^6.4"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",
@@ -46,5 +47,11 @@
         "allow-plugins": {
             "phpstan/extension-installer": true
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/kenjis/codeigniter-shield.git"
+        }
+    ]
 }
