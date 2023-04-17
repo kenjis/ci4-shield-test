@@ -3,7 +3,7 @@
 This repository includes:
 
 - CodeIgniter v4.3.3
-- CodeIgniter Shield v1.0.0-beta.5
+- CodeIgniter Shield `dev-feat-jwt`
 
 ## Requirements
 
@@ -47,6 +47,58 @@ $ php spark migrate --all
 $ php spark serve
 ```
 
+### How to Test JSON Web Token (JWT) Authentication
+
+#### 1. Register a User
+
+Navigate to <http://localhost:8080/register>.
+
+#### 2. Get a JWT
+
+```console
+$ curl --location 'http://localhost:8080/auth/jwt' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'email=admin@example.jp' \
+--data-urlencode 'password=passw0rd!'
+```
+
+```console
+{
+    "message": "User authenticated successfully",
+    "user": {
+        "id": 1,
+        "username": "admin",
+        "status": null,
+        "status_message": null,
+        "active": true,
+        "last_active": {
+            "date": "2023-04-18 05:41:44.000000",
+            "timezone_type": 3,
+            "timezone": "UTC"
+        },
+        "created_at": {
+            "date": "2023-04-14 00:17:00.000000",
+            "timezone_type": 3,
+            "timezone": "UTC"
+        },
+        "updated_at": {
+            "date": "2023-04-18 05:41:44.000000",
+            "timezone_type": 3,
+            "timezone": "UTC"
+        },
+        "deleted_at": null
+    },
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJTaGllbGQgVGVzdCBBcHAiLCJzdWIiOiIxIiwiaWF0IjoxNjgxODA1OTMwLCJleHAiOjE2ODE4MDk1MzB9.DGpOmRPOBe45whVtEOSt53qJTw_CpH0V8oMoI_gm2XI"
+}
+```
+
+#### 3. Access with the JWT
+
+```console
+$ curl --location --request GET 'http://localhost:8080/api/users' \
+--header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJTaGllbGQgVGVzdCBBcHAiLCJzdWIiOiIxIiwiaWF0IjoxNjgxODA1OTMwLCJleHAiOjE2ODE4MDk1MzB9.DGpOmRPOBe45whVtEOSt53qJTw_CpH0V8oMoI_gm2XI'
+```
+
 ### Defined Routes
 
 ```console
@@ -60,11 +112,13 @@ $ php spark serve
 | GET    | login/verify-magic-link | verify-magic-link  | \CodeIgniter\Shield\Controllers\MagicLinkController::verify        |                | toolbar       |
 | GET    | logout                  | logout             | \CodeIgniter\Shield\Controllers\LoginController::logoutAction      |                | toolbar       |
 | GET    | auth/a/show             | auth-action-show   | \CodeIgniter\Shield\Controllers\ActionController::show             |                | toolbar       |
+| GET    | api/users               | »                  | \App\Controllers\Api\User::index                                   | jwt            | jwt toolbar   |
 | POST   | register                | »                  | \CodeIgniter\Shield\Controllers\RegisterController::registerAction |                | toolbar       |
 | POST   | login                   | »                  | \CodeIgniter\Shield\Controllers\LoginController::loginAction       |                | toolbar       |
 | POST   | login/magic-link        | »                  | \CodeIgniter\Shield\Controllers\MagicLinkController::loginAction   |                | toolbar       |
 | POST   | auth/a/handle           | auth-action-handle | \CodeIgniter\Shield\Controllers\ActionController::handle           |                | toolbar       |
 | POST   | auth/a/verify           | auth-action-verify | \CodeIgniter\Shield\Controllers\ActionController::verify           |                | toolbar       |
+| POST   | auth/jwt                | »                  | \App\Controllers\Auth\LoginController::jwtLogin                    |                | toolbar       |
 +--------+-------------------------+--------------------+--------------------------------------------------------------------+----------------+---------------+
 ```
 
