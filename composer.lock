@@ -148,12 +148,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kenjis/codeigniter-shield.git",
-                "reference": "324bcb7aa350ced85854d91239aeec9f065efb54"
+                "reference": "10d18d55bd91d16ba687a2c7766a6f88fa9e453d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kenjis/codeigniter-shield/zipball/324bcb7aa350ced85854d91239aeec9f065efb54",
-                "reference": "324bcb7aa350ced85854d91239aeec9f065efb54",
+                "url": "https://api.github.com/repos/kenjis/codeigniter-shield/zipball/10d18d55bd91d16ba687a2c7766a6f88fa9e453d",
+                "reference": "10d18d55bd91d16ba687a2c7766a6f88fa9e453d",
                 "shasum": ""
             },
             "require": {
@@ -171,7 +171,8 @@
                 "mockery/mockery": "^1.0"
             },
             "suggest": {
-                "ext-curl": "Required to use the password validation rule via PwnedValidator class."
+                "ext-curl": "Required to use the password validation rule via PwnedValidator class.",
+                "ext-openssl": "Required to use the JWT Authenticator."
             },
             "type": "library",
             "autoload": {
@@ -259,7 +260,7 @@
                 "issues": "https://github.com/codeigniter4/shield/issues",
                 "docs": "https://github.com/codeigniter4/shield/blob/develop/docs/index.md"
             },
-            "time": "2023-04-13T23:43:01+00:00"
+            "time": "2023-04-17T08:19:59+00:00"
         },
         {
             "name": "firebase/php-jwt",
@@ -2765,16 +2766,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.6",
+            "version": "9.6.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "b65d59a059d3004a040c16a82e07bbdf6cfdd115"
+                "reference": "c993f0d3b0489ffc42ee2fe0bd645af1538a63b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b65d59a059d3004a040c16a82e07bbdf6cfdd115",
-                "reference": "b65d59a059d3004a040c16a82e07bbdf6cfdd115",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c993f0d3b0489ffc42ee2fe0bd645af1538a63b2",
+                "reference": "c993f0d3b0489ffc42ee2fe0bd645af1538a63b2",
                 "shasum": ""
             },
             "require": {
@@ -2848,7 +2849,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.6"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.7"
             },
             "funding": [
                 {
@@ -2864,7 +2865,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-27T11:43:46+00:00"
+            "time": "2023-04-14T08:58:40+00:00"
         },
         {
             "name": "psr/cache",

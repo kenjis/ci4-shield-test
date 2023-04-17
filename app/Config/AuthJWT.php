@@ -22,33 +22,60 @@ class AuthJWT extends ShieldAuthJWT
     public string $authenticatorHeader = 'Authorization';
 
     /**
-     * The payload items that all JWT have.
+     * --------------------------------------------------------------------
+     * The Default Payload Items
+     * --------------------------------------------------------------------
+     * All JWTs will have these claims in the payload.
      *
-     * @var string[]
-     * @phpstan-var array<string, string>
+     * @var array<string, string>
      */
-    public array $claims = [
+    public array $defaultClaims = [
         'iss' => '<Issuer of the JWT>',
-        'aud' => '<Audience of the JWT>',
     ];
 
     /**
-     * The secret key. Needs more than 256 bits random string.
-     * E.g., $ php -r 'echo base64_encode(random_bytes(32));'
+     * --------------------------------------------------------------------
+     * The Keys
+     * --------------------------------------------------------------------
+     * The key of the array is the key group name.
+     * The first key of the group is used for signing.
+     *
+     * @var array<string, array<int, array<string, string>>>
+     * @phpstan-var array<string, list<array<string, string>>>
      */
-    public string $secretKey = '<Set secret random string like MQ4GfWut1OYZxPY9fXAIq2YP6KzTSKOGNS7dJNcRrR8=>';
+    public array $keys = [
+        'default' => [
+            // Symmetric Key
+            [
+                'kid' => '',      // Key ID. Optional if you have only one key.
+                'alg' => 'HS256', // algorithm.
+                // Set secret random string. Needs more than 256 bits.
+                // E.g., $ php -r 'echo base64_encode(random_bytes(32));'
+                'secret' => '<Set secret random string>',
+            ],
+            // Asymmetric Key
+            // [
+            //     'kid'        => '',      // Key ID. Optional if you have only one key.
+            //     'alg'        => 'RS256', // algorithm.
+            //     'public'     => '',      // Public Key
+            //     'private'    => '',      // Private Key
+            //     'passphrase' => ''       // Passphrase
+            // ],
+        ],
+    ];
 
     /**
-     * JWT Signing Algorithms.
-     */
-    public string $algorithm = 'HS256';
-
-    /**
+     * --------------------------------------------------------------------
+     * Time To Live (in seconds)
+     * --------------------------------------------------------------------
      * Specifies the amount of time, in seconds, that a token is valid.
      */
     public int $timeToLive = HOUR;
 
     /**
+     * --------------------------------------------------------------------
+     * Record Login Attempts
+     * --------------------------------------------------------------------
      * Whether login attempts are recorded in the database.
      *
      * Valid values are:

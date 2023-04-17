@@ -7,6 +7,7 @@ namespace Config;
 use CodeIgniter\Shield\Authentication\Actions\ActionInterface;
 use CodeIgniter\Shield\Authentication\AuthenticatorInterface;
 use CodeIgniter\Shield\Authentication\Authenticators\AccessTokens;
+use CodeIgniter\Shield\Authentication\Authenticators\JWT;
 use CodeIgniter\Shield\Authentication\Authenticators\Session;
 use CodeIgniter\Shield\Authentication\Passwords\CompositionValidator;
 use CodeIgniter\Shield\Authentication\Passwords\DictionaryValidator;
@@ -18,6 +19,10 @@ use CodeIgniter\Shield\Models\UserModel;
 
 class Auth extends ShieldAuth
 {
+    public const RECORD_LOGIN_ATTEMPT_NONE    = 0; // Do not record at all
+    public const RECORD_LOGIN_ATTEMPT_FAILURE = 1; // Record only failures
+    public const RECORD_LOGIN_ATTEMPT_ALL     = 2; // Record all login attempts
+
     /**
      * ////////////////////////////////////////////////////////////////////
      * AUTHENTICATION
@@ -122,6 +127,7 @@ class Auth extends ShieldAuth
     public array $authenticators = [
         'tokens'  => AccessTokens::class,
         'session' => Session::class,
+        'jwt'     => JWT::class,
     ];
 
     /**
