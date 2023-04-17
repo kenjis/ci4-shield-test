@@ -30,7 +30,7 @@ class AuthJWT extends ShieldAuthJWT
      * @var array<string, string>
      */
     public array $defaultClaims = [
-        'iss' => '<Issuer of the JWT>',
+        'iss' => 'Shield Test App',
     ];
 
     /**
