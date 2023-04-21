@@ -23,14 +23,14 @@ class LoginController extends BaseController
         $rules = $this->getValidationRules();
 
         // Validate credentials
-        if (! $this->validateData($this->request->getPost(), $rules)) {
+        if (! $this->validateData($this->request->getJSON(true), $rules)) {
             return $this->failValidationErrors($this->validator->getErrors(), 422);
         }
 
         // Get the credentials for login
-        $credentials             = $this->request->getPost(setting('Auth.validFields'));
+        $credentials             = $this->request->getJsonVar(setting('Auth.validFields'));
         $credentials             = array_filter($credentials);
-        $credentials['password'] = $this->request->getPost('password');
+        $credentials['password'] = $this->request->getJsonVar('password');
 
         /** @var Session $authenticator */
         $authenticator = auth('session')->getAuthenticator();

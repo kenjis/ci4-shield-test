@@ -57,9 +57,8 @@ Navigate to <http://localhost:8080/register>.
 
 ```console
 $ curl --location 'http://localhost:8080/auth/jwt' \
---header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'email=admin@example.jp' \
---data-urlencode 'password=passw0rd!'
+--header 'Content-Type: application/json' \
+--data-raw '{"email" : "admin@example.jp" , "password" : "passw0rd!"}'
 ```
 
 ```console
