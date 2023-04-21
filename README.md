@@ -24,7 +24,7 @@ $ composer install
 ### Create Database
 
 ```mysql
-CREATE DATABASE `ci_shield` DEFAULT CHARACTER SET utf8mb4;
+CREATE DATABASE `ci_shield` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 CREATE USER dbuser@localhost IDENTIFIED WITH mysql_native_password BY 'dbpasswd';
 GRANT ALL PRIVILEGES ON ci_shield.* TO dbuser@localhost;
 ```
