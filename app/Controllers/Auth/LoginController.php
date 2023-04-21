@@ -24,7 +24,10 @@ class LoginController extends BaseController
 
         // Validate credentials
         if (! $this->validateData($this->request->getJSON(true), $rules)) {
-            return $this->failValidationErrors($this->validator->getErrors(), 422);
+            return $this->fail(
+                ['errors' => $this->validator->getErrors()],
+                $this->codes['unauthorized']
+            );
         }
 
         // Get the credentials for login
