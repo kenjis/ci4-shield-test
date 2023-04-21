@@ -3,7 +3,7 @@
 This repository includes:
 
 - CodeIgniter v4.3.3
-- CodeIgniter Shield `dev-feat-jwt`
+- CodeIgniter Shield `dev-develop`
 
 ## Requirements
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9dc40b6ed8f3fcd81fb5847734723c03",
+    "content-hash": "0785530c3497490b53d9d6a92f5cb75a",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -144,16 +144,16 @@
         },
         {
             "name": "codeigniter4/shield",
-            "version": "dev-feat-jwt",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
-                "url": "https://github.com/kenjis/codeigniter-shield.git",
-                "reference": "f2ddb6f1acaf32df5d02fe7da4220970f78b46b8"
+                "url": "https://github.com/codeigniter4/shield.git",
+                "reference": "392bd485daf9f09a2fa0331410073fa89a7a55e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kenjis/codeigniter-shield/zipball/f2ddb6f1acaf32df5d02fe7da4220970f78b46b8",
-                "reference": "f2ddb6f1acaf32df5d02fe7da4220970f78b46b8",
+                "url": "https://api.github.com/repos/codeigniter4/shield/zipball/392bd485daf9f09a2fa0331410073fa89a7a55e4",
+                "reference": "392bd485daf9f09a2fa0331410073fa89a7a55e4",
                 "shasum": ""
             },
             "require": {
@@ -174,67 +174,21 @@
                 "ext-curl": "Required to use the password validation rule via PwnedValidator class.",
                 "ext-openssl": "Required to use the JWT Authenticator."
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
+                "files": [
+                    "src/Helpers/auth_helper.php",
+                    "src/Helpers/email_helper.php"
+                ],
                 "psr-4": {
                     "CodeIgniter\\Shield\\": "src"
                 },
                 "exclude-from-classmap": [
                     "**/Database/Migrations/**"
-                ],
-                "files": [
-                    "src/Helpers/auth_helper.php",
-                    "src/Helpers/email_helper.php"
                 ]
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Tests\\": "tests",
-                    "Tests\\Support\\": "tests/_support"
-                }
-            },
-            "scripts": {
-                "post-update-cmd": [
-                    "bash admin/setup.sh"
-                ],
-                "analyze": [
-                    "phpstan analyze",
-                    "psalm",
-                    "rector process --dry-run"
-                ],
-                "sa": [
-                    "@analyze"
-                ],
-                "ci": [
-                    "Composer\\Config::disableProcessTimeout",
-                    "@cs",
-                    "@deduplicate",
-                    "@inspect",
-                    "@analyze",
-                    "@test"
-                ],
-                "cs": [
-                    "php-cs-fixer fix --ansi --verbose --dry-run --diff"
-                ],
-                "cs-fix": [
-                    "php-cs-fixer fix --ansi --verbose --diff"
-                ],
-                "deduplicate": [
-                    "phpcpd app/ src/ --exclude src/Database/Migrations/2020-12-28-223112_create_auth_tables.php"
-                ],
-                "inspect": [
-                    "deptrac analyze --cache-file=build/deptrac.cache"
-                ],
-                "mutate": [
-                    "infection --threads=2 --skip-initial-tests --coverage=build/phpunit"
-                ],
-                "style": [
-                    "@cs-fix"
-                ],
-                "test": [
-                    "phpunit"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -248,19 +202,19 @@
             "description": "Authentication and Authorization for CodeIgniter 4",
             "homepage": "https://github.com/codeigniter4/shield",
             "keywords": [
-                "authentication",
+                "Authentication",
                 "authorization",
                 "codeigniter",
                 "codeigniter4"
             ],
             "support": {
+                "docs": "https://github.com/codeigniter4/shield/blob/develop/docs/index.md",
                 "forum": "https://github.com/codeigniter4/shield/discussions",
-                "slack": "https://codeigniterchat.slack.com",
-                "source": "https://github.com/codeigniter4/shield",
                 "issues": "https://github.com/codeigniter4/shield/issues",
-                "docs": "https://github.com/codeigniter4/shield/blob/develop/docs/index.md"
+                "slack": "https://codeigniterchat.slack.com",
+                "source": "https://github.com/codeigniter4/shield"
             },
-            "time": "2023-04-21T02:12:31+00:00"
+            "time": "2023-04-21T12:26:11+00:00"
         },
         {
             "name": "firebase/php-jwt",
