@@ -3,7 +3,7 @@
 This repository includes:
 
 - CodeIgniter v4.3.3
-- CodeIgniter Shield `dev-develop`
+- CodeIgniter Shield v1.0.0-beta.6
 
 ## Requirements
 
