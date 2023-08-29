@@ -2,12 +2,12 @@
 
 This repository includes:
 
-- CodeIgniter v4.3.7
+- CodeIgniter v4.4.0
 - CodeIgniter Shield v1.0.0-beta.6
 
 ## Requirements
 
-- PHP 7.4 or later
+- PHP 8.1 or later
 - `composer` command (See [Composer Installation](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos))
 - Git
 
