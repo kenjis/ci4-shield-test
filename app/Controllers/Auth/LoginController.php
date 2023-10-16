@@ -7,8 +7,7 @@ use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Shield\Authentication\Authenticators\Session;
 use CodeIgniter\Shield\Authentication\JWTManager;
-use CodeIgniter\Shield\Authentication\Passwords;
-use CodeIgniter\Shield\Config\AuthSession;
+use CodeIgniter\Shield\Validation\ValidationRules;
 
 class LoginController extends BaseController
 {
@@ -74,18 +73,8 @@ class LoginController extends BaseController
      */
     protected function getValidationRules(): array
     {
-        return setting('Validation.login') ?? [
-            'email' => [
-                'label' => 'Auth.email',
-                'rules' => config(AuthSession::class)->emailValidationRules,
-            ],
-            'password' => [
-                'label'  => 'Auth.password',
-                'rules'  => 'required|' . Passwords::getMaxLenghtRule(),
-                'errors' => [
-                    'max_byte' => 'Auth.errorPasswordTooLongBytes',
-                ],
-            ],
-        ];
+        $rules = new ValidationRules();
+
+        return $rules->getLoginRules();
     }
 }
