@@ -98,6 +98,62 @@ $ curl --location --request GET 'http://localhost:8080/jwt/api/users' \
 --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJTaGllbGQgVGVzdCBBcHAiLCJzdWIiOiIxIiwiaWF0IjoxNjgxODA1OTMwLCJleHAiOjE2ODE4MDk1MzB9.DGpOmRPOBe45whVtEOSt53qJTw_CpH0V8oMoI_gm2XI'
 ```
 
+### How to Test HMAC SHA256 Token Authentication
+
+#### 1. Register a User
+
+Navigate to <http://localhost:8080/register>.
+
+#### 2. Get a HMAC Token
+
+```console
+$ curl --location 'http://localhost:8080/auth/hmac' \
+--header 'Content-Type: application/json' \
+--data-raw '{"email":"admin@example.jp","password":"passw0rd!","token_name":"MacBook Air"}'
+```
+
+```console
+{
+    "message": "User authenticated successfully",
+    "user": {
+        "id": 1,
+        "username": "admin",
+        "status": null,
+        "status_message": null,
+        "active": true,
+        "last_active": {
+            "date": "2023-11-16 02:52:04.000000",
+            "timezone_type": 3,
+            "timezone": "UTC"
+        },
+        "created_at": {
+            "date": "2023-11-16 02:49:49.000000",
+            "timezone_type": 3,
+            "timezone": "UTC"
+        },
+        "updated_at": {
+            "date": "2023-11-16 02:52:04.000000",
+            "timezone_type": 3,
+            "timezone": "UTC"
+        },
+        "deleted_at": null
+    },
+    "hmac_token": {
+        "name": "MacBook Air",
+        "key": "81c9aade1c070b2f53928921516bf688",
+        "secretKey": "5d06d09809d1dd2db61e6f69e91a243643d0dcedb246896638579fa5fef4eab7"
+    }
+}
+```
+
+#### 3. Access with the HMAC Token
+
+```console
+$ php spark hmac:request 81c9aade1c070b2f53928921516bf688 \
+5d06d09809d1dd2db61e6f69e91a243643d0dcedb246896638579fa5fef4eab7 \
+GET 'http://localhost:8080/hmac/api/users' ''
+```
+
 ### Defined Routes
 
 ```console
@@ -112,12 +168,14 @@ $ curl --location --request GET 'http://localhost:8080/jwt/api/users' \
 | GET    | logout                  | »                  | \CodeIgniter\Shield\Controllers\LoginController::logoutAction      |                | toolbar       |
 | GET    | auth/a/show             | auth-action-show   | \CodeIgniter\Shield\Controllers\ActionController::show             |                | toolbar       |
 | GET    | jwt/api/users           | »                  | \App\Controllers\Api\User::index                                   | jwt            | jwt toolbar   |
+| GET    | hmac/api/users          | »                  | \App\Controllers\Api\User::index                                   | hmac           | hmac toolbar  |
 | POST   | register                | »                  | \CodeIgniter\Shield\Controllers\RegisterController::registerAction |                | toolbar       |
 | POST   | login                   | »                  | \CodeIgniter\Shield\Controllers\LoginController::loginAction       |                | toolbar       |
 | POST   | login/magic-link        | »                  | \CodeIgniter\Shield\Controllers\MagicLinkController::loginAction   |                | toolbar       |
 | POST   | auth/a/handle           | auth-action-handle | \CodeIgniter\Shield\Controllers\ActionController::handle           |                | toolbar       |
 | POST   | auth/a/verify           | auth-action-verify | \CodeIgniter\Shield\Controllers\ActionController::verify           |                | toolbar       |
 | POST   | auth/jwt                | »                  | \App\Controllers\Auth\LoginController::jwtLogin                    |                | toolbar       |
+| POST   | auth/hmac               | »                  | \App\Controllers\Auth\LoginController::hmacLogin                   |                | toolbar       |
 +--------+-------------------------+--------------------+--------------------------------------------------------------------+----------------+---------------+
 ```
 

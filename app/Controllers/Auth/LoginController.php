@@ -66,6 +66,59 @@ class LoginController extends BaseController
     }
 
     /**
+     * Authenticate Existing User and Issue HMAC Token.
+     */
+    public function hmacLogin(): ResponseInterface
+    {
+        // Get the validation rules
+        $rules               = $this->getValidationRules();
+        $rules['token_name'] = 'max_length[255]|min_length[1]|alpha_numeric_space';
+
+        // Validate credentials
+        if (! $this->validateData($this->request->getJSON(true), $rules)) {
+            return $this->fail(
+                ['errors' => $this->validator->getErrors()],
+                $this->codes['unauthorized']
+            );
+        }
+
+        // Get the credentials for login
+        $credentials             = $this->request->getJsonVar(setting('Auth.validFields'));
+        $credentials             = array_filter($credentials);
+        $credentials['password'] = $this->request->getJsonVar('password');
+
+        /** @var Session $authenticator */
+        $authenticator = auth('session')->getAuthenticator();
+
+        // Check the credentials
+        $result = $authenticator->check($credentials);
+
+        // Credentials mismatch.
+        if (! $result->isOK()) {
+            // @TODO record a failed login attempt?
+
+            return $this->failUnauthorized($result->reason());
+        }
+
+        // Credentials match.
+        // @TODO record a successful login attempt?
+
+        $user = $result->extraInfo();
+
+        $token = $user->generateHmacToken($this->request->getJsonVar('token_name'));
+
+        return $this->respond([
+            'message'    => 'User authenticated successfully',
+            'user'       => $user,
+            'hmac_token' => [
+                'name'      => $token->name,
+                'key'       => $token->secret,
+                'secretKey' => $token->secret2,
+            ],
+        ]);
+    }
+
+    /**
      * Returns the rules that should be used for validation.
      *
      * @return array<string, array<string, array<string>|string>>
