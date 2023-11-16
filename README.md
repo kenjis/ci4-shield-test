@@ -105,13 +105,13 @@ $ curl --location --request GET 'http://localhost:8080/jwt/api/users' \
 | Method | Route                   | Name               | Handler                                                            | Before Filters | After Filters |
 +--------+-------------------------+--------------------+--------------------------------------------------------------------+----------------+---------------+
 | GET    | /                       | »                  | \App\Controllers\Home::index                                       |                | toolbar       |
-| GET    | register                | register           | \CodeIgniter\Shield\Controllers\RegisterController::registerView   |                | toolbar       |
-| GET    | login                   | login              | \CodeIgniter\Shield\Controllers\LoginController::loginView         |                | toolbar       |
+| GET    | register                | »                  | \CodeIgniter\Shield\Controllers\RegisterController::registerView   |                | toolbar       |
+| GET    | login                   | »                  | \CodeIgniter\Shield\Controllers\LoginController::loginView         |                | toolbar       |
 | GET    | login/magic-link        | magic-link         | \CodeIgniter\Shield\Controllers\MagicLinkController::loginView     |                | toolbar       |
 | GET    | login/verify-magic-link | verify-magic-link  | \CodeIgniter\Shield\Controllers\MagicLinkController::verify        |                | toolbar       |
-| GET    | logout                  | logout             | \CodeIgniter\Shield\Controllers\LoginController::logoutAction      |                | toolbar       |
+| GET    | logout                  | »                  | \CodeIgniter\Shield\Controllers\LoginController::logoutAction      |                | toolbar       |
 | GET    | auth/a/show             | auth-action-show   | \CodeIgniter\Shield\Controllers\ActionController::show             |                | toolbar       |
-| GET    | api/users               | »                  | \App\Controllers\Api\User::index                                   | jwt            | jwt toolbar   |
+| GET    | jwt/api/users           | »                  | \App\Controllers\Api\User::index                                   | jwt            | jwt toolbar   |
 | POST   | register                | »                  | \CodeIgniter\Shield\Controllers\RegisterController::registerAction |                | toolbar       |
 | POST   | login                   | »                  | \CodeIgniter\Shield\Controllers\LoginController::loginAction       |                | toolbar       |
 | POST   | login/magic-link        | »                  | \CodeIgniter\Shield\Controllers\MagicLinkController::loginAction   |                | toolbar       |
