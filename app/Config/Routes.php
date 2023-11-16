@@ -13,6 +13,6 @@ $routes->post('auth/jwt', '\App\Controllers\Auth\LoginController::jwtLogin');
 
 use App\Controllers\Api\User;
 
-$routes->group('api', ['filter' => 'jwt'], static function ($routes) {
+$routes->group('jwt/api', ['filter' => 'jwt'], static function ($routes) {
     $routes->get('users', [User::class, 'index']);
 });

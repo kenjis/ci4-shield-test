@@ -58,7 +58,7 @@ Navigate to <http://localhost:8080/register>.
 ```console
 $ curl --location 'http://localhost:8080/auth/jwt' \
 --header 'Content-Type: application/json' \
---data-raw '{"email" : "admin@example.jp" , "password" : "passw0rd!"}'
+--data-raw '{"email":"admin@example.jp","password":"passw0rd!"}'
 ```
 
 ```console
@@ -94,7 +94,7 @@ $ curl --location 'http://localhost:8080/auth/jwt' \
 #### 3. Access with the JWT
 
 ```console
-$ curl --location --request GET 'http://localhost:8080/api/users' \
+$ curl --location --request GET 'http://localhost:8080/jwt/api/users' \
 --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJTaGllbGQgVGVzdCBBcHAiLCJzdWIiOiIxIiwiaWF0IjoxNjgxODA1OTMwLCJleHAiOjE2ODE4MDk1MzB9.DGpOmRPOBe45whVtEOSt53qJTw_CpH0V8oMoI_gm2XI'
 ```
 
