@@ -21,7 +21,11 @@ $ cd ci4-shield-test/
 $ composer install
 ```
 
-### Create Database
+### (Optional) Create Database
+
+By default, this project uses SQLite3.
+
+If you use MySQL, create a database:
 
 ```mysql
 CREATE DATABASE `ci_shield` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
