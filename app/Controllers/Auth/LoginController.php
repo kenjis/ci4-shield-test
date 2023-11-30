@@ -113,7 +113,7 @@ class LoginController extends BaseController
             'hmac_token' => [
                 'name'      => $token->name,
                 'key'       => $token->secret,
-                'secretKey' => $token->secret2,
+                'secretKey' => $token->rawSecretKey,
             ],
         ]);
     }
