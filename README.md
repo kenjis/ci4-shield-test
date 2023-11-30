@@ -3,7 +3,7 @@
 This repository includes:
 
 - CodeIgniter v4.4.3
-- CodeIgniter Shield v1.0.0-beta.7
+- CodeIgniter Shield v1.0.0-beta.8
 
 ## Requirements
 
@@ -38,6 +38,8 @@ GRANT ALL PRIVILEGES ON ci_shield.* TO dbuser@localhost;
 ```console
 $ cp env.sample .env
 ```
+
+If you use MySQL, change the configuration.
 
 ### Run Database Migration
 
@@ -144,8 +146,8 @@ $ curl --location 'http://localhost:8080/auth/hmac' \
     },
     "hmac_token": {
         "name": "MacBook Air",
-        "key": "81c9aade1c070b2f53928921516bf688",
-        "secretKey": "5d06d09809d1dd2db61e6f69e91a243643d0dcedb246896638579fa5fef4eab7"
+        "key": "9f6ea7ab9f78f33d3a3465d75bf76c16",
+        "secretKey": "Dg2g47PAfHQjlJYFYGHRt4MedNqNnSj5/u5zHyVu6jA="
     }
 }
 ```
@@ -153,8 +155,8 @@ $ curl --location 'http://localhost:8080/auth/hmac' \
 #### 3. Access with the HMAC Token
 
 ```console
-$ php spark hmac:request 81c9aade1c070b2f53928921516bf688 \
-5d06d09809d1dd2db61e6f69e91a243643d0dcedb246896638579fa5fef4eab7 \
+$ php spark hmac:request 9f6ea7ab9f78f33d3a3465d75bf76c16 \
+Dg2g47PAfHQjlJYFYGHRt4MedNqNnSj5/u5zHyVu6jA= \
 GET 'http://localhost:8080/hmac/api/users' ''
 ```
 
