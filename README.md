@@ -7,7 +7,7 @@ This repository includes:
 
 ## Requirements
 
-- PHP 8.1 or later
+- PHP 8.2 or later
 - `composer` command (See [Composer Installation](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos))
 - Git
 
