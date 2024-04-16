@@ -2,8 +2,8 @@
 
 This repository includes:
 
-- CodeIgniter v4.4.5
-- CodeIgniter Shield v1.0.0
+- CodeIgniter v4.5.1
+- CodeIgniter Shield v1.0.3
 
 ## Requirements
 
