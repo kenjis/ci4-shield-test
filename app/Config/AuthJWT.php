@@ -40,7 +40,7 @@ class AuthJWT extends ShieldAuthJWT
      * The key of the array is the key group name.
      * The first key of the group is used for signing.
      *
-     * @var array<string, array<int, array<string, string>>>
+     * @var         array<string, array<int, array<string, string>>>
      * @phpstan-var array<string, list<array<string, string>>>
      */
     public array $keys = [
