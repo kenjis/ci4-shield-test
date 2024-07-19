@@ -511,7 +511,7 @@ class Auth extends ShieldAuth
         $final_url = '';
 
         switch (true) {
-            case strpos($url, 'http://') === 0 || strpos($url, 'https://') === 0: // URL begins with 'http' or 'https'. E.g. http://example.com
+            case str_starts_with($url, 'http://') || str_starts_with($url, 'https://')  : // URL begins with 'http' or 'https'. E.g. http://example.com
                 $final_url = $url;
                 break;
 
